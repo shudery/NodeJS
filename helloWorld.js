@@ -1,5 +1,6 @@
 var http = require("http"),fs = require("fs");
 
+// use node without express
 function serveStaticFile(res,path,contentType,responseCode){
     if(!responseCode)responseCode=200;
     fs.readFile(__dirname + path,function(err,data){
