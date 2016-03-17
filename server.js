@@ -1,15 +1,12 @@
 var http = require('http');
 
 http.createServer(function (request, response) {
-
-	// ·¢ËÍ HTTP Í·²¿ 
-	// HTTP ×´Ì¬Öµ: 200 : OK
-	// ÄÚÈİÀàĞÍ: text/plain
+    // å‘é€ HTTP å¤´éƒ¨
+    // HTTP çŠ¶æ€å€¼: 200 : OK
+    // å†…å®¹ç±»å‹: text/plain
 	response.writeHead(200, {'Content-Type': 'text/plain'});
 
-	// ·¢ËÍÏìÓ¦Êı¾İ "Hello World"
 	response.end('Hello WorldHello WorldHello World\n');
 }).listen(8888);
 
-// ÖÕ¶Ë´òÓ¡ÈçÏÂĞÅÏ¢
 console.log('Server running at http://127.0.0.1:8888/');
