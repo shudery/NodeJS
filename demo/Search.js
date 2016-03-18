@@ -1,6 +1,5 @@
-/**
- * Created by IBM on 2016/3/17.
- */
+// * Created by IBM on 2016/3/17.*/
+
 var http =require('http');
 var cheerio = require('cheerio');
 //cheerio是一个语法与jq相似的库
@@ -8,7 +7,6 @@ var url = 'http://www.imooc.com/learn/348';
 //将URL上的html代码全部爬下来
 function filterChapters(html){
     var $ =cheerio.load(html);
-    var chapters = $('.chapter');
 
     var courseData =[];
     //放大章的一个数组
