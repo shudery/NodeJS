@@ -1,4 +1,5 @@
 // * Created by IBM on 2016/3/17.*/
+//imooc爬虫
 
 var http =require('http');
 var cheerio = require('cheerio');
@@ -7,9 +8,10 @@ var url = 'http://www.imooc.com/learn/348';
 //将URL上的html代码全部爬下来
 function filterChapters(html){
     var $ =cheerio.load(html);
+    var chapters = $('.chapter');//传入要遍历的所有章节
 
     var courseData =[];
-    //放大章的一个数组
+    //存放每一大章的一个数组
     chapters.each(function(item){
 
         var chapterData = {
@@ -24,7 +26,7 @@ function filterChapters(html){
         videos.each(function(item){
             var video = $(this).find('.studyvideo');
             var videoTitle = video.text();
-            var id = video.attr('href').split('video/')[1];
+            var id = video.attr('href').split('video/')[1];//[0]为空
 
             chapterData.videos.push({
                 title:videoTitle,
@@ -43,7 +45,7 @@ function printCourseInfo(courseData){
 
     courseData.forEach(function(item){
         var chapterTitle = item.chapterTitle;
-        console.log(chapterTitle+'\n');
+        console.log('\n' + chapterTitle+'\n');
         item.videos.forEach(function(video){
             console.log(video.id+':'+video.title);
         })
@@ -54,9 +56,11 @@ http.get(url,function(res){
     var html= '';
     res.on('data',function(data){
         html += data;
+        //绑定监听数据流，并将数据保存到html
     })
 
     res.on('end',function(){
+        //监听数据传输是否结束
         var courseData  = filterChapters(html)
         //过滤得到的代码
         printCourseInfo(courseData);
