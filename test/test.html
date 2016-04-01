@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #test{
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+<div id="test">sssss</div>
+<form>
+    <input type="text" id="d">
+    <input type="text">
+    <input type="text">
+    <input type="text">
+    <input type="text">
+</form>
+<script src="../imooc/bower_components/jquery/dist/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("div").mouseleave(function(){
+                $("div").css("background-color","blue");
+            });
+            $('input').onfocus(function(){
+                alert('s');
+            });
+            document.body.onblur(function(){
+                alert('s');
+            })
+        })
+    </script>
+</body>
+</html>
